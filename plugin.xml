@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-wefitter-health-connect" version="0.0.1">
+    <name>WeFitterHealthConnect</name>
+    <description>A Cordova plugin for WeFitter for Health Connect</description>
+    <keywords>cordova,android,wefitter,health connect</keywords>
+
+    <js-module src="www/wefitterhealthconnect.js" name="wefitterhealthconnect">
+        <clobbers target="wefitterhealthconnect" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="WeFitterHealthConnect">
+                <param name="android-package" value="com.wefitter.cordova.plugin.WeFitterHealthConnect"/>
+            </feature>
+            <preference name="GradlePluginKotlinEnabled" value="true" />
+            <preference name="android-minSdkVersion" value="26" />
+            <preference name="android-compileSdkVersion" value="34" />
+        </config-file>
+
+        <source-file src="src/android/WeFitterHealthConnect.kt" target-dir="src/main/kotlin/com/wefitter/cordova/plugin" />
+
+        <lib-file src="libs/android/wefitter-health-connect-0.0.1.aar" />
+
+        <framework src="build-extras.gradle" custom="true" type="gradleReference" />
+        <framework src="androidx.health.connect:connect-client:1.1.0-alpha02" />
+        <framework src="androidx.lifecycle:lifecycle-runtime-ktx:2.6.1" />
+        <framework src="androidx.security:security-crypto:1.0.0" />
+        <framework src="androidx.work:work-runtime-ktx:2.8.1" />
+        <framework src="com.auth0.android:jwtdecode:2.0.2" />
+        <framework src="com.google.code.gson:gson:2.10.1" />
+        <framework src="com.squareup.okhttp3:okhttp:4.11.0" />
+    </platform>
+</plugin>
